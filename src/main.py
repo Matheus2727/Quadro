@@ -7,14 +7,16 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 import requests
 import time
 import random
+from pathlib import Path
 
 app = Flask(__name__)
 app.secret_key = "Ss123$%¨"
-PHOTOS_FOLDER = "src\\static\\photos"
+PHOTOS_FOLDER = Path('src') / 'static' / 'DB.db'
 lista_photos = []
 
 def get_db():
-    return sqlite3.connect("DB\\DB.db")
+    db_path = Path('DB') / 'DB.db'
+    return sqlite3.connect(db_path)
 
 @app.route("/")
 def home():

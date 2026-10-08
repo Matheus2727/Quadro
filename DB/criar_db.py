@@ -1,6 +1,8 @@
 import sqlite3
+from pathlib import Path
 
-conn = sqlite3.connect("DB\\DB.db")
+db_path = Path('DB') / 'DB.db'
+conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 
 # Datatypes:
