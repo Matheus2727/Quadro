@@ -1,0 +1,13 @@
+venv/
+referencias/
+comandos/
+obs/
+Quadro/
+
+DB/*.*
+!DB/criar_db.py
+!DB/alterar_db.py
+
+src/static/photos/*.*
+
+!src/static/photos/nada.txt
