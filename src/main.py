@@ -31,7 +31,15 @@ def home():
     
     cursor.execute("""select Tempo from Configs""")
     res = cursor.fetchall()
-    tempo = res[0]["Tempo"]
+    if len(res) == 0:
+        cursor.execute("""
+        insert into Configs (Tempo) values (?)
+        """,(5))
+        conn.commit()
+        tempo = 5
+
+    else:
+        tempo = res[0]["Tempo"]
 
     cursor.execute("""select distinct Tag from Tags""")
     res_tags = cursor.fetchall()
