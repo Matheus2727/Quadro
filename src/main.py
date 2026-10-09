@@ -35,7 +35,7 @@ def home():
     if len(res) == 0:
         cursor.execute("""
         insert into Configs (Tempo) values (?)
-        """,(5))
+        """,(5,))
         conn.commit()
         tempo = 5
 
