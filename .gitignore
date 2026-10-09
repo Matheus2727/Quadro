@@ -9,5 +9,6 @@ DB/*.*
 !DB/alterar_db.py
 
 src/static/photos/*.*
+src/auth.py
 
 !src/static/photos/nada.txt

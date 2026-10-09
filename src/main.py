@@ -78,9 +78,10 @@ def cancelar():
 
 @app.route("/login", methods=["GET"])
 def login():
+    import auth
     #return render_template("login.html", url="")
-    CLIENT_ID = "1002825116954-m66aa1uco2ajjke66ssdjkeitntnmqfr.apps.googleusercontent.com"
-    CLIENT_SECRET = "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"
+    CLIENT_ID = auth.CLIENT_ID
+    CLIENT_SECRET = auth.CLIENT_SECRET
     SCOPES = ["https://www.googleapis.com/auth/photospicker.mediaitems.readonly"]
     flow = InstalledAppFlow.from_client_config(
         {
