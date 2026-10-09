@@ -8,6 +8,7 @@ import requests
 import time
 import random
 from pathlib import Path
+import subprocess
 
 app = Flask(__name__)
 app.secret_key = "Ss123$%¨"
@@ -399,6 +400,25 @@ def applyTags():
 
     session["tags_desejadas"] = tags_desejadas
     return redirect("/cancelar")
+
+@app.route("/gitPull")
+def gitPull():
+    try:
+        resultado = subprocess.run(
+            ['git', 'pull'],
+            cwd='/home/remoto/Desktop/PRD/Quadro/src',
+            capture_output=True,
+            text=True,
+            timeout=30
+        )
+
+        if resultado.returncode != 0:
+            return render_template("retornoGitPull.html", retorno=str(resultado.stderr))
+
+        return render_template("retornoGitPull.html", retorno=str(resultado.stdout))
+
+    except subprocess.TimeoutExpired:
+        return render_template("retornoGitPull.html", retorno="Falhou por Timeout")
 
 if __name__ == "__main__":
     app.run(host="::", debug=True)
