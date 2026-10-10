@@ -238,7 +238,12 @@ def shuffle():
     
     conn.close()
 
-    lista_photos = res
+    if len(res) == 0:
+        lista_photos = [{"ID_Photo": "Sem Correspondencia", "Extension_Photo": "", "Data_Photo": "", "Width": 0, "Height": 0}]
+
+    else:
+        lista_photos = res
+        
     obter_total()
 
 def obter_foto():
